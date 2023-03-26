@@ -13,6 +13,7 @@ import IconButton from '@mui/material/IconButton'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
 import Grid from '@mui/material/Grid'
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
 
 // Styled Grid component
 const StyledGrid = styled(Grid)(({ theme }) => ({
@@ -27,16 +28,13 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
   }
 }))
 
-const Product = () => {
-  // ** State
-  const [anchorEl, setAnchorEl] = useState(null)
-
+const Product = ({ product }) => {
   return (
     <Card>
       <Grid container spacing={6}>
         <StyledGrid item md={5} xs={12}>
           <CardContent sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img width={137} height={176} alt='Apple iPhone 11 Pro' src='/images/cards/iPhone-11-pro.png' />
+            <img width={137} height={176} alt='Apple iPhone 11 Pro' src={product.image} />
           </CardContent>
         </StyledGrid>
         <Grid
@@ -50,25 +48,30 @@ const Product = () => {
         >
           <CardContent>
             <Typography variant='h6' sx={{ mb: 2 }}>
-              Apple iPhone 11 Pro
+              {product.title}
             </Typography>
             <Typography variant='body2' sx={{ mb: 3.5 }}>
-              Apple iPhone 11 Pro smartphone. Announced Sep 2019. Features 5.8″ display Apple A13 Bionic
+              {product.description}
             </Typography>
             <Typography sx={{ fontWeight: 500, mb: 3 }}>
-              Price:{' '}
+              category:
               <Box component='span' sx={{ fontWeight: 'bold' }}>
-                $899
+                {product.category}
+              </Box>
+            </Typography>
+            <Typography sx={{ fontWeight: 500, mb: 3 }}>
+              Price:
+              <Box component='span' sx={{ fontWeight: 'bold' }}>
+                {product.price}
               </Box>
             </Typography>
           </CardContent>
           <CardActions className='card-action-dense'>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
               <Button>
-                {/* <CartPlus fontSize='small' sx={{ mr: 2 }} /> */}
+                <AddShoppingCartIcon fontSize='small' sx={{ mr: 2 }} />
                 Add to Card
               </Button>
-              ]
             </Box>
           </CardActions>
         </Grid>

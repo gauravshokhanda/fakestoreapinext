@@ -46,8 +46,6 @@ const Home = () => {
 
   const cartTotal = cartItem.reduce((total, item) => total + item.price * item.quantity, 0)
 
-  // console.log(cartTotal, 'cartTotal')
-
   const filterProducts = (term, category) => {
     let filtered = [...products]
     if (term) {
