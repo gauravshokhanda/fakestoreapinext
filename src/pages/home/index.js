@@ -9,8 +9,6 @@ const Home = () => {
   const [filteredProducts, setFilteredProducts] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
 
-  console.log(cartItem, 'cartItem')
-
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
@@ -42,8 +40,6 @@ const Home = () => {
     }
   }
 
-  console.log(cartItem, 'kkkkkkkkkk')
-
   const cartTotal = cartItem.reduce((total, item) => total + item.price * item.quantity, 0)
 
   const filterProducts = (term, category) => {
@@ -71,6 +67,7 @@ const Home = () => {
         searchTerm={searchTerm}
         products={products}
         filteredProducts={filteredProducts}
+        handleRemoveFromCart={handleRemoveFromCart}
         setCartItem={setCartItem}
         cartItem={cartItem}
       />

@@ -10,8 +10,10 @@ import { Grid } from '@mui/material'
 import Rating from '@mui/material/Rating'
 import { Box } from '@mui/system'
 
-const ProductList = ({ products, searchTerm, cartItem, setCartItem }) => {
+const ProductList = ({ products, searchTerm, cartItem, setCartItem, handleRemoveFromCart }) => {
   const filteredProducts = products.filter(product => product.title.toLowerCase().includes(searchTerm.toLowerCase()))
+
+  const [show, setShow] = useState(false)
 
   function AddToCart(item) {
     // setCartItem([...cartItem, item])
@@ -24,6 +26,7 @@ const ProductList = ({ products, searchTerm, cartItem, setCartItem }) => {
     } else {
       // If the item is not in the cart, add it with a quantity of 1
       setCartItem([...cartItem, { ...item, quantity: 1 }])
+      setShow(true)
     }
   }
 
@@ -66,15 +69,25 @@ const ProductList = ({ products, searchTerm, cartItem, setCartItem }) => {
               </Typography>
             </CardContent>
 
-            <Button
-              variant='contained'
-              sx={{ py: 2.5, width: '100%', borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
-              onClick={() => {
-                AddToCart(item)
-              }}
-            >
-              Add To Cart
-            </Button>
+            {item.quantity > 0 ? (
+              <Button
+                variant='contained'
+                sx={{ py: 2.5, width: '100%', borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+                onClick={() => handleRemoveFromCart(item)}
+              >
+                remove from cart
+              </Button>
+            ) : (
+              <Button
+                variant='contained'
+                sx={{ py: 2.5, width: '100%', borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+                onClick={() => {
+                  AddToCart(item)
+                }}
+              >
+                Add To Cart
+              </Button>
+            )}
           </Card>
         </Grid>
       ))}
