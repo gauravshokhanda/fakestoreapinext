@@ -14,14 +14,6 @@ import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
 import Grid from '@mui/material/Grid'
 
-// ** Icons Imports
-import Twitter from 'mdi-material-ui/Twitter'
-import CartPlus from 'mdi-material-ui/CartPlus'
-import Facebook from 'mdi-material-ui/Facebook'
-import Linkedin from 'mdi-material-ui/Linkedin'
-import GooglePlus from 'mdi-material-ui/GooglePlus'
-import ShareVariant from 'mdi-material-ui/ShareVariant'
-
 // Styled Grid component
 const StyledGrid = styled(Grid)(({ theme }) => ({
   display: 'flex',
